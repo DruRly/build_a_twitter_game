@@ -27,7 +27,7 @@
 
       <div id="user-images" class="auto-margin">
         <div ng-repeat="tweet in shuffled_tweets" class="image auto-margin">
-          <img ng-src="{{tweet.profile_image_url}}">
+          <img ng-src="{{tweet.profile_image_url}}" ng-click="revealAnswer()" class="answer-{{holder_val || tweet.from_user == selected_tweet_user}}">
         </div>
       </div>
     </div>

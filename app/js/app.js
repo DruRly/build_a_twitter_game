@@ -1,6 +1,15 @@
 angular.module('Twitter', ['ngResource']);
 
+function aReload() {
+  window.location.reload()
+}
+
+function startReload() {
+  setTimeout("aReload()", 1000);
+}
+
 function TwitterCtrl($scope, $resource) {
+  $scope.holder_val = 'holder';
 
   $scope.twitter = $resource('http://search.twitter.com/:action',
       {action:'search.json', callback:'JSON_CALLBACK'},
@@ -15,4 +24,9 @@ function TwitterCtrl($scope, $resource) {
 
     $scope.selected_tweet_user = $scope.tweets[0].from_user;
   });
+
+  $scope.revealAnswer = function() {
+    $scope.holder_val = null;
+    startReload();
+  };
 }
