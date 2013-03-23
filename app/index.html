@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html ng-app="Twitter">
   <head>
     <meta charset="utf-8">
     <title>Who said that?</title>
@@ -14,7 +14,7 @@
     <script src="js/app.js"></script>
   </head>
   <body>
-    <div id="app-container" class="container-fluid auto-margin">
+    <div ng-controller="TwitterCtrl" id="app-container" class="container-fluid auto-margin">
       <div id="app-title">
         <p class="header auto-margin">
           Who said that?
@@ -22,10 +22,12 @@
       </div>
 
       <p class="selected-tweet auto-margin">
+        "{{selected_tweet_text}}"
       </p>
 
       <div id="user-images" class="auto-margin">
-        <div class="image auto-margin">
+        <div ng-repeat="tweet in shuffled_tweets" class="image auto-margin">
+          <img ng-src="{{tweet.profile_image_url}}">
         </div>
       </div>
     </div>
