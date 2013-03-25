@@ -9,7 +9,6 @@ function startReload() {
 }
 
 function TwitterCtrl($scope, $resource) {
-  $scope.holder_val = 'holder';
 
   $scope.twitter = $resource('http://search.twitter.com/:action',
       {action:'search.json', callback:'JSON_CALLBACK'},
@@ -18,7 +17,7 @@ function TwitterCtrl($scope, $resource) {
   $scope.twitterResult = $scope.twitter.get({q:"i"}, function() {
     $scope.tweets = $scope.twitterResult.results;
 
-    $scope.shuffled_tweets = _.shuffle($scope.twitterResult.results);
+    $scope.shuffled_tweets = _.shuffle($scope.tweets);
 
     $scope.selected_tweet_text = $scope.tweets[0].text;
 
@@ -26,7 +25,7 @@ function TwitterCtrl($scope, $resource) {
   });
 
   $scope.revealAnswer = function() {
-    $scope.holder_val = null;
+    $scope.answer = "answer";
     startReload();
   };
 }
